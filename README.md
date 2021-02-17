@@ -6,6 +6,8 @@ In my example with https://letsencrypt.org certificates.
 
 Without Java installation on the host system.
 
+See the unifi_ssl.sh Script
+
 ## UniFi Controller Docker Image
 Tested with the following UniFi Controller Docker image on Raspberry Pi OS 64bit.
 https://github.com/linuxserver/docker-unifi-controller
