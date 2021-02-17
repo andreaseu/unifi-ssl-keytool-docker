@@ -1,18 +1,18 @@
-# unifi-ssl-keytool-docker
-Docker container script for SSL certificate replacement via the Java Keytool Programm.
+# unifi-ssl-keytool-docker - Shell Script
+Docker container shell script for SSL certificate replacement via the Java Keytool Programm.
 
-This is a shell script that replace the self-issued SSL certificate
-of a Unifi controller for a signed certificate.
-Without the installation of Java on the host system.
+This is a shell script that replace the self-issued SSL certificate of a Unifi controller for a signed certificate.
+In my example with https://letsencrypt.org certificates.
+
+Without Java installation on the host system.
 
 ## UniFi Controller Docker Image
 Tested with the following UniFi Controller Docker image on Raspberry Pi OS 64bit.
 https://github.com/linuxserver/docker-unifi-controller
 
-# Lets Certbot
+# Lets Certbot - Example with Cloudflare DNS Certbot Docker Container
 Certbot is the official client from  [Let’s Encrypt](https://letsencrypt.org/)  to request SSL certificates. We will use the cloudflare-dns plugin to obtain certificates because it’s the easiest and the most flexible way (we don’t have to open any port for an HTTP challenge, we can request a certificate for any of our domain or subdomain and even a wildcard certificate). As usual, we will use a Docker container.
-The official Certbot Docker image doesn’t support ARM architecture yet so we will build our image based on the official Dockerfiles.
-Copied from https://github.com/gpailler
+Copy and customized from https://github.com/gpailler
 
 ```
 mkdir /opt/docker/certbot && cd /opt/docker/certbot
@@ -66,8 +66,6 @@ echo "Using etc: $ETC, /var/log: $LOG, /var/lib/letsencrypt: $LIB"
 if [ $TEST ]; then echo '***TEST MODE***'; fi
 echo "Running command: $COMMAND"
 
-# Finally do something:
-# The command runs *INTERACTIVELY* and has not (yet) been tested for renewals
 sudo docker run -it --rm --name certbot \
    -v "$ETC:/etc/letsencrypt:rw" \
    -v "$LIB:/var/lib/letsencrypt:rw" \
