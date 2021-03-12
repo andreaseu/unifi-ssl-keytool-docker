@@ -4,7 +4,7 @@
 # Tested with the following UniFi Controller Docker image:
 # https://github.com/linuxserver/docker-unifi-controller
 # 
-# Scripted by Andreas Hähnel - https://github.com/andreaseu
+# Scripted by Andreas Hähnel - https://github.com/easys.dev
 
 # Setup an 'environment'
 DOMAIN=unifi.example.com #UniFi URL
